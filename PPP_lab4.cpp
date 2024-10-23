@@ -6,6 +6,7 @@
 #include "Manipulator.h"
 #include "Mover.h"
 #include "Navigator.h"
+#include "ThreadWrap.h"
 using namespace std;
 
 int main()
@@ -20,8 +21,14 @@ int main()
     Mover mover;
     Navigator navigator;
 
-    //camera.start();
-    gps.start();
+    ThreadWrap<GPS> gpsThread(&gps);
+    gpsThread.startThread();
+
+    ThreadWrap<Camera> cameraThread(&camera);
+    cameraThread.startThread();
+
+    gpsThread.waitForThread();
+    cameraThread.waitForThread();
 
     return 0;
 }

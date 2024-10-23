@@ -12,6 +12,6 @@ void Camera::start()
 	while (true)
 	{
 		sendData(count++);
-		this_thread::sleep_for(chrono::milliseconds(1500));
+		this_thread::sleep_for(chrono::milliseconds(2000));
 	}
 }

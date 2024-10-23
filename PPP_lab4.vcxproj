@@ -135,6 +135,7 @@
     <ClCompile Include="Mover.cpp" />
     <ClCompile Include="Navigator.cpp" />
     <ClCompile Include="PPP_lab4.cpp" />
+    <ClCompile Include="ThreadWrap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
@@ -144,6 +145,7 @@
     <ClInclude Include="Manipulator.h" />
     <ClInclude Include="Mover.h" />
     <ClInclude Include="Navigator.h" />
+    <ClInclude Include="ThreadWrap.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
