@@ -127,7 +127,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Communicator.cpp" />
+    <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="GPS.cpp" />
+    <ClCompile Include="Manipulator.cpp" />
+    <ClCompile Include="Mover.cpp" />
+    <ClCompile Include="Navigator.cpp" />
     <ClCompile Include="PPP_lab4.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="Communicator.h" />
+    <ClInclude Include="Controller.h" />
+    <ClInclude Include="GPS.h" />
+    <ClInclude Include="Manipulator.h" />
+    <ClInclude Include="Mover.h" />
+    <ClInclude Include="Navigator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
