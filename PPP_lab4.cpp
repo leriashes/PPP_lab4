@@ -20,7 +20,8 @@ int main()
     Mover mover;
     Navigator navigator;
 
-    camera.start();
+    //camera.start();
+    gps.start();
 
     return 0;
 }
