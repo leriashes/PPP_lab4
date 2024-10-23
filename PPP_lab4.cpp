@@ -21,10 +21,10 @@ int main()
     Mover mover;
     Navigator navigator;
 
-    ThreadWrap<GPS> gpsThread(&gps);
+    ThreadWrap gpsThread(&gps);
     gpsThread.startThread();
 
-    ThreadWrap<Camera> cameraThread(&camera);
+    ThreadWrap cameraThread(&camera);
     cameraThread.startThread();
 
     gpsThread.waitForThread();

@@ -2,17 +2,15 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
+#include "MoonwalkerModule.h"
 using namespace std;
 
-class Camera
+class Camera : public MoonwalkerModule
 {
 private:
 	void sendData(int count);
 
 public:
-
-	Camera() = default;
-
-	void start();
+	void start() override;
 };
 

@@ -2,17 +2,15 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
+#include "MoonwalkerModule.h"
 using namespace std;
 
-class GPS
+class GPS : public MoonwalkerModule
 {
 private:
 	void sendData(int count);
 
 public:
-
-	GPS() = default;
-
-	void start();
+	void start() override;
 };
 

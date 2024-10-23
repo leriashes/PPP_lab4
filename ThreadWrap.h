@@ -1,38 +1,21 @@
 #pragma once
 #include <windows.h>
 #include <iostream>
+#include "MoonwalkerModule.h"
 using namespace std;
 
-template <typename T>
 class ThreadWrap
 {
 private:
-    T* module;
+    MoonwalkerModule* module;
     HANDLE threadHandle;
 
-    static DWORD WINAPI threadFunction(LPVOID lpParam) {
-        T* module = static_cast<T*>(lpParam);
-        module->start();  // Запуск основного метода модуля
-        return 0;
-    }
+    static DWORD WINAPI threadFunction(LPVOID lpParam);
 
 public:
     // Конструктор получает указатель на модуль
-    ThreadWrap(T* module) : module(module), threadHandle(NULL) {}
+    ThreadWrap(MoonwalkerModule* module) : module(module), threadHandle(NULL) {}
 
-    // Метод для старта потока
-    void startThread() {
-        threadHandle = CreateThread(NULL, 0, threadFunction, module, 0, NULL);
-        if (threadHandle == NULL) {
-            cerr << "Ошибка при создании потока.\n";
-        }
-    }
-
-    // Ожидание завершения потока
-    void waitForThread() {
-        if (threadHandle != NULL) {
-            WaitForSingleObject(threadHandle, INFINITE);
-            CloseHandle(threadHandle);
-        }
-    }
+    void startThread(); // Метод для старта потока
+    void waitForThread(); // Ожидание завершения потока
 };

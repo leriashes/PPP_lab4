@@ -132,6 +132,7 @@
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="GPS.cpp" />
     <ClCompile Include="Manipulator.cpp" />
+    <ClCompile Include="MoonwalkerModule.cpp" />
     <ClCompile Include="Mover.cpp" />
     <ClCompile Include="Navigator.cpp" />
     <ClCompile Include="PPP_lab4.cpp" />
@@ -143,6 +144,7 @@
     <ClInclude Include="Controller.h" />
     <ClInclude Include="GPS.h" />
     <ClInclude Include="Manipulator.h" />
+    <ClInclude Include="MoonwalkerModule.h" />
     <ClInclude Include="Mover.h" />
     <ClInclude Include="Navigator.h" />
     <ClInclude Include="ThreadWrap.h" />
