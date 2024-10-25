@@ -13,13 +13,17 @@ int main()
 {
     setlocale(LC_ALL, "rus");
 
-    Camera camera;
+    TChannel Nav;
+    TChannel Img;
+
+    Camera camera(&Img);
     Communicator communicator;
     Controller controller;
-    GPS gps;
+    GPS gps(&Nav);
     Manipulator manipulator;
     Mover mover;
     Navigator navigator;
+
 
     ThreadWrap gpsThread(&gps);
     gpsThread.startThread();

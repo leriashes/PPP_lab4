@@ -1,4 +1,6 @@
 #pragma once
+#include "TChannel.h"
+
 class MoonwalkerModule
 {
 public:

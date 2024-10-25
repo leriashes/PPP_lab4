@@ -136,7 +136,10 @@
     <ClCompile Include="Mover.cpp" />
     <ClCompile Include="Navigator.cpp" />
     <ClCompile Include="PPP_lab4.cpp" />
+    <ClCompile Include="TChannel.cpp" />
+    <ClCompile Include="TData.cpp" />
     <ClCompile Include="ThreadWrap.cpp" />
+    <ClCompile Include="TSemaphore.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
@@ -147,7 +150,10 @@
     <ClInclude Include="MoonwalkerModule.h" />
     <ClInclude Include="Mover.h" />
     <ClInclude Include="Navigator.h" />
+    <ClInclude Include="TChannel.h" />
+    <ClInclude Include="TData.h" />
     <ClInclude Include="ThreadWrap.h" />
+    <ClInclude Include="TSemaphore.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -5,6 +5,11 @@ void Camera::sendData(int count)
 	cout << "\nÊÀÌÅĞÀ: îòïğàâêà ñíèìêà #" << count;
 }
 
+Camera::Camera(TChannel* channel)
+{
+	Img = channel;
+}
+
 void Camera::start()
 {
 	int count = 0;
