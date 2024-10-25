@@ -7,7 +7,15 @@ void Navigator::getPathData()
 	TData data;
 	NewPath->get(&data);
 
-	cout << "\nНАВИГАТОР .1: получена точка назначения #" << data.getNumber();
+	if (data.getModuleNumber() == 1)
+		version = 0;
+	else
+		version += 1;
+
+	if (!version)
+		cout << "\nНАВИГАТОР .1: получена точка назначения #" << data.getNumber();
+	else
+		cout << "\nНАВИГАТОР .1: получена точка назначения #" << data.getNumber() << ", необходимо перестроить маршрут";
 }
 
 void Navigator::getGPSData()
@@ -20,10 +28,19 @@ void Navigator::getGPSData()
 	cout << "\nНАВИГАТОР .2: получено местоположение #" << data.getNumber();
 }
 
-Navigator::Navigator(TChannel* CommunicatorChannel, TChannel* GPSChannel)
+void Navigator::sendData()
+{
+	cout << "\nНАВИГАТОР .3: отправка маршрута на Контроллер...";
+
+	TData data(version, 1, "точка назначения");
+	Path->put(data);
+}
+
+Navigator::Navigator(TChannel* CommunicatorChannel, TChannel* GPSChannel, TChannel* ContrChannel)
 {
 	NewPath = CommunicatorChannel;
 	Nav = GPSChannel;
+	Path = ContrChannel;
 }
 
 void Navigator::start()
@@ -32,5 +49,10 @@ void Navigator::start()
 	{
 		getPathData();
 		getGPSData();
+		
+		cout << "\nНАВИГАТОР: построение маршрута...";
+		this_thread::sleep_for(chrono::milliseconds(10000));
+
+		sendData();
 	}
 }

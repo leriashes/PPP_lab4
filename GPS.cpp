@@ -2,12 +2,10 @@
 
 void GPS::sendData(int count)
 {
-	cout << "\nGPS: отправка местоположения #" << count << "...";
-
 	TData data(count, 3, "текущее местоположение");
 	Nav->put(data);
 
-	cout << "\nGPS: отправка местоположения #" << count << " выполнена";
+	cout << "\n    GPS: отправлено местоположение #" << count;
 }
 
 GPS::GPS(TChannel* channel)

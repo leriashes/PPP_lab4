@@ -2,12 +2,10 @@
 
 void Camera::sendData(int count)
 {
-	cout << "\nÊÀÌÅĞÀ: îòïğàâêà ñíèìêà #" << count<< "...";
-
 	TData data(count, 7, "ñíèìîê");
 	Img->put(data);
 
-	cout << "\nÊÀÌÅĞÀ: îòïğàâêà ñíèìêà #" << count << " âûïîëíåíà";
+	cout << "\n    ÊÀÌÅĞÀ: îòïğàâëåí ñíèìîê #" << count;
 }
 
 Camera::Camera(TChannel* channel)

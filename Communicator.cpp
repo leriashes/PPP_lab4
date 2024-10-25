@@ -6,8 +6,6 @@ void Communicator::sendData(int count)
 
 	TData data(count, 1, "òî÷êà íàçíà÷åíèÿ");
 	NewPath->put(data);
-
-	cout << "\nÊÎÌÌÓÍÈÊÀÖÈÎÍÍÛÉ ÌÎÄÓËÜ .1: îòïğàâêà òî÷êè íàçíà÷åíèÿ #" << count << " âûïîëíåíà";
 }
 
 void Communicator::getData()

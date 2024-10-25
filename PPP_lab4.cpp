@@ -17,6 +17,7 @@ int main()
     TChannel Img;
 
     TReliableChannel NewPath;
+    TReliableChannel Path;
     TReliableChannel Finish;
 
     Camera camera(&Img);
@@ -25,7 +26,7 @@ int main()
     GPS gps(&Nav);
     Manipulator manipulator;
     Mover mover;
-    Navigator navigator(&NewPath, &Nav);
+    Navigator navigator(&NewPath, &Nav, &Path);
 
 
     ThreadWrap gpsThread(&gps);
