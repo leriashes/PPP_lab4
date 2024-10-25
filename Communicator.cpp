@@ -28,7 +28,7 @@ void Communicator::start()
 {
 	int i = 0;
 
-	while (i < 5)
+	while (i < 1)
 	{
 		sendData(i);
 		getData();
