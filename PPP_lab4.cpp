@@ -22,7 +22,7 @@ int main()
     GPS gps(&Nav);
     Manipulator manipulator;
     Mover mover;
-    Navigator navigator;
+    Navigator navigator(&Nav);
 
 
     ThreadWrap gpsThread(&gps);
@@ -31,8 +31,12 @@ int main()
     ThreadWrap cameraThread(&camera);
     cameraThread.startThread();
 
+    ThreadWrap navigatorThread(&navigator);
+    navigatorThread.startThread();
+
     gpsThread.waitForThread();
     cameraThread.waitForThread();
+    navigatorThread.waitForThread();
 
     return 0;
 }
