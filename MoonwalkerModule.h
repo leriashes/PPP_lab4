@@ -2,7 +2,7 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
-#include "TChannel.h"
+#include "TReliableChannel.h"
 using namespace std;
 
 class MoonwalkerModule

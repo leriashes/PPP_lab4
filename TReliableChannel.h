@@ -6,8 +6,8 @@ private:
 	TSemaphore* free;
 
 public:
-	void put(TData t);
-	void get(TData* resultData);
+	void put(TData t) override;
+	void get(TData* resultData) override;
 
 	TReliableChannel();
 	~TReliableChannel();

@@ -1,5 +1,15 @@
 #include "Navigator.h"
 
+void Navigator::getPathData()
+{
+	cout << "\nНАВИГАТОР: ожидание точки назначения от Коммуникационного модуля...";
+
+	TData data;
+	NewPath->get(&data);
+
+	cout << "\nНАВИГАТОР: получена точка назначения #" << data.getNumber();
+}
+
 void Navigator::getGPSData()
 {
 	cout << "\nНАВИГАТОР: ожидание местоположения от GPS...";
@@ -10,15 +20,17 @@ void Navigator::getGPSData()
 	cout << "\nНАВИГАТОР: получено местоположение #" << data.getNumber();
 }
 
-Navigator::Navigator(TChannel* GPSchannel)
+Navigator::Navigator(TChannel* CommunicatorChannel, TChannel* GPSChannel)
 {
-	Nav = GPSchannel;
+	NewPath = CommunicatorChannel;
+	Nav = GPSChannel;
 }
 
 void Navigator::start()
 {
 	while (true)
 	{
+		getPathData();
 		getGPSData();
 	}
 }

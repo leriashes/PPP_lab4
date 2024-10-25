@@ -9,8 +9,8 @@ protected:
     TData data;
 
 public:
-    void put(TData t);
-    void get(TData* resultData);
+    virtual void put(TData t);
+    virtual void get(TData* resultData);
     TChannel();
-    ~TChannel();
+    virtual ~TChannel();
 };
