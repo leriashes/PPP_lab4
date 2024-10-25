@@ -2,22 +2,22 @@
 
 void Navigator::getPathData()
 {
-	cout << "\nНАВИГАТОР: ожидание точки назначения от Коммуникационного модуля...";
+	cout << "\nНАВИГАТОР .1: ожидание точки назначения...";
 
 	TData data;
 	NewPath->get(&data);
 
-	cout << "\nНАВИГАТОР: получена точка назначения #" << data.getNumber();
+	cout << "\nНАВИГАТОР .1: получена точка назначения #" << data.getNumber();
 }
 
 void Navigator::getGPSData()
 {
-	cout << "\nНАВИГАТОР: ожидание местоположения от GPS...";
+	cout << "\nНАВИГАТОР .2: ожидание местоположения от GPS...";
 
 	TData data;
 	Nav->get(&data);
 
-	cout << "\nНАВИГАТОР: получено местоположение #" << data.getNumber();
+	cout << "\nНАВИГАТОР .2: получено местоположение #" << data.getNumber();
 }
 
 Navigator::Navigator(TChannel* CommunicatorChannel, TChannel* GPSChannel)
