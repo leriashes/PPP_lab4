@@ -4,8 +4,7 @@
 
 class TChannel
 {
-private:
-    TSemaphore* free;
+protected:
     TSemaphore* empty;
     TData data;
 

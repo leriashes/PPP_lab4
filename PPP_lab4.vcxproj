@@ -139,6 +139,7 @@
     <ClCompile Include="TChannel.cpp" />
     <ClCompile Include="TData.cpp" />
     <ClCompile Include="ThreadWrap.cpp" />
+    <ClCompile Include="TReliableChannel.cpp" />
     <ClCompile Include="TSemaphore.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +154,7 @@
     <ClInclude Include="TChannel.h" />
     <ClInclude Include="TData.h" />
     <ClInclude Include="ThreadWrap.h" />
+    <ClInclude Include="TReliableChannel.h" />
     <ClInclude Include="TSemaphore.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
