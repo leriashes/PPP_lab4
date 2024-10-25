@@ -6,11 +6,14 @@ class TChannel
 {
 protected:
     TSemaphore* empty;
-    TData data;
+    HANDLE fileMem;
+    void* buffer;
+    const char* channelName;
+    const size_t bufferSize;
 
 public:
     virtual void put(TData t);
     virtual void get(TData* resultData);
-    TChannel();
+    TChannel(const char* name, size_t size);
     virtual ~TChannel();
 };

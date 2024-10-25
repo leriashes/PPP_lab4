@@ -9,7 +9,7 @@ public:
 	void put(TData t) override;
 	void get(TData* resultData) override;
 
-	TReliableChannel();
+	TReliableChannel(const char* name, size_t size);
 	~TReliableChannel();
 };
 

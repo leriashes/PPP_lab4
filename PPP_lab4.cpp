@@ -13,12 +13,12 @@ int main()
 {
     setlocale(LC_ALL, "rus");
 
-    TChannel Nav;
-    TChannel Img;
+    TChannel Nav("NAV", 1024);
+    TChannel Img("IMG", 1024);
 
-    TReliableChannel NewPath, Path, Finish;
-    TReliableChannel Start, Stop;
-    TReliableChannel Take, Ready;
+    TReliableChannel NewPath("NewPath", 1024), Path("Path", 1024), Finish("Finish", 1024);
+    TReliableChannel Start("Start", 1024), Stop("Stop", 1024);
+    TReliableChannel Take("Take", 1024), Ready("Ready", 1024);
 
     Camera camera(&Img);
     Communicator communicator(&NewPath, &Finish);

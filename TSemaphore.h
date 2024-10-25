@@ -1,13 +1,15 @@
 #pragma once
+#include <Windows.h>
+
 class TSemaphore
 {
 private:
-    int count;  // локальный счетчик
+    HANDLE Sem;
 
 public:
     void P(); 
     void V();
 
-    TSemaphore(int start);
+    TSemaphore(const char* name, int start);
     ~TSemaphore();
 };
