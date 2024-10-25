@@ -24,7 +24,7 @@ int main()
     Communicator communicator(&NewPath, &Finish);
     Controller controller(&Path, &NewPath, &Img, &Start, &Stop, &Take, &Ready, &Finish);
     GPS gps(&Nav);
-    Manipulator manipulator;
+    Manipulator manipulator(&Take, &Ready);
     Mover mover;
     Navigator navigator(&NewPath, &Nav, &Path);
 
@@ -44,11 +44,15 @@ int main()
     ThreadWrap communicatorThread(&communicator);
     communicatorThread.startThread();
 
+    ThreadWrap manipulatorThread(&manipulator);
+    manipulatorThread.startThread();
+
     gpsThread.waitForThread();
     cameraThread.waitForThread();
     navigatorThread.waitForThread();
     communicatorThread.waitForThread();
     controllerThread.waitForThread();
+    manipulatorThread.waitForThread();
 
     return 0;
 }
