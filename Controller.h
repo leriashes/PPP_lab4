@@ -21,7 +21,7 @@ private:
 
 	void sendStartMoving();
 	void getStopMoving();
-	void sendStopData();
+	void sendStopData(bool obstacle);
 	void sendTake();
 	void getReady();
 	void sendFinish();

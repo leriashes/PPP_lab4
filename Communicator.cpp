@@ -8,14 +8,14 @@ void Communicator::sendData(int count)
 	NewPath->put(data);
 }
 
-void Communicator::getData()
+void Communicator::getData(int count)
 {
 	cout << "\nÊÎÌÌÓÍÈÊÀÖÈÎÍÍÛÉ ÌÎÄÓËÜ .2_1: îæèäàíèå ñîîáùåíèÿ î çàâåðøåíèè îò Êîíòðîëëåðà...";
 
 	TData data;
 	Finish->get(&data);
 
-	cout << "\nÊÎÌÌÓÍÈÊÀÖÈÎÍÍÛÉ ÌÎÄÓËÜ .2_2: ïîëó÷åíî ñîîáùåíèÿ î çàâåðøåíèè #" << data.getNumber();
+	cout << "\nÊÎÌÌÓÍÈÊÀÖÈÎÍÍÛÉ ÌÎÄÓËÜ .2_2: ïîëó÷åíî ñîîáùåíèå î çàâåðøåíèè ìèññèè #" << count;
 }
 
 Communicator::Communicator(TChannel* NavChannel, TChannel* ContrChannel)
@@ -26,12 +26,12 @@ Communicator::Communicator(TChannel* NavChannel, TChannel* ContrChannel)
 
 void Communicator::start()
 {
-	int i = 0;
+	int i = 1;
 
-	while (i < 1)
+	while (i < 2)
 	{
 		sendData(i);
-		getData();
+		getData(i);
 
 		i++;
 	}

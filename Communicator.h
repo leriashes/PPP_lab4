@@ -8,7 +8,7 @@ private:
 	TChannel* Finish;
 
 	void sendData(int count);
-	void getData();
+	void getData(int count);
 
 public:
 	Communicator(TChannel* NavChannel, TChannel* ContrChannel);

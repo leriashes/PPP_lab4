@@ -15,7 +15,7 @@ GPS::GPS(TChannel* channel)
 
 void GPS::start()
 {
-	int count = 0;
+	int count = 1;
 
 	while (true)
 	{

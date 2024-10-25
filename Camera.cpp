@@ -15,7 +15,7 @@ Camera::Camera(TChannel* channel)
 
 void Camera::start()
 {
-	int count = 0;
+	int count = 1;
 
 	while (true)
 	{

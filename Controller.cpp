@@ -31,7 +31,7 @@ void Controller::start()
 				getStopMoving();
 			}
 
-			sendStopData();
+			sendStopData(obstacle);
 		}
 		else
 		{
@@ -49,7 +49,7 @@ bool Controller::getPathData()
 	TData data;
 	Path->get(&data);
 
-	if (data.getNumber() == 1)
+	if (data.getNumber() != 0)
 	{
 		cout << "\nÊÎÍÒĞÎËËÅĞ .1_2: ïîëó÷åíà êîìàíäà - ïğîäîëæèòü äâèæåíèå";
 		return true;
@@ -68,14 +68,14 @@ bool Controller::getCameraData()
 	TData data;
 	Img->get(&data);
 
-	if (data.getNumber() % 3)
+	if (data.getNumber() % 3 == 0)
 	{
-		cout << "\nÊÎÍÒĞÎËËÅĞ .2_2: ïîëó÷åíî èçîáğàæåíèå ñ Êàìåğû - îáíàğóæåíî ïğåïÿòñòâèå";
+		cout << "\nÊÎÍÒĞÎËËÅĞ .2_2: ïîëó÷åíî èçîáğàæåíèå ñ Êàìåğû #" << data.getNumber() << " - îáíàğóæåíî ïğåïÿòñòâèå";
 		return true;
 	}
 	else
 	{
-		cout << "\nÊÎÍÒĞÎËËÅĞ .2_2: ïîëó÷åíî èçîáğàæåíèå ñ Êàìåğû - ïğåïÿòñòâèé íåò";
+		cout << "\nÊÎÍÒĞÎËËÅĞ .2_2: ïîëó÷åíî èçîáğàæåíèå ñ Êàìåğû #" << data.getNumber() << " - ïğåïÿòñòâèé íåò";
 		return false;
 	}
 }
@@ -98,11 +98,11 @@ void Controller::getStopMoving()
 	cout << "\nÊÎÍÒĞÎËËÅĞ .4_2: ïîëó÷åíî ñîîáùåíèå î çàâåğøåíèè äâèæåíèÿ ñ Ìîäóëÿ ïåğåäâèæåíèÿ";
 }
 
-void Controller::sendStopData()
+void Controller::sendStopData(bool obstacle)
 {
 	cout << "\nÊÎÍÒĞÎËËÅĞ .5: îòïğàâêà ñîîáùåíèÿ îá îñòàíîâêå â Íàâèãàòîğ...";
 
-	TData data(0, 4, "îñòàíîâèëèñü");
+	TData data(obstacle, 4, "îñòàíîâèëèñü");
 	NewPath->put(data);
 }
 
