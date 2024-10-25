@@ -10,12 +10,12 @@ void Communicator::sendData(int count)
 
 void Communicator::getData()
 {
-	cout << "\nÊÎÌÌÓÍÈÊÀÖÈÎÍÍÛÉ ÌÎÄÓËÜ .2: îæèäàíèå ñîîáùåíèÿ î çàâåðøåíèè îò Êîíòðîëëåðà...";
+	cout << "\nÊÎÌÌÓÍÈÊÀÖÈÎÍÍÛÉ ÌÎÄÓËÜ .2_1: îæèäàíèå ñîîáùåíèÿ î çàâåðøåíèè îò Êîíòðîëëåðà...";
 
 	TData data;
 	Finish->get(&data);
 
-	cout << "\nÊÎÌÌÓÍÈÊÀÖÈÎÍÍÛÉ ÌÎÄÓËÜ .2: ïîëó÷åíî ñîîáùåíèÿ î çàâåðøåíèè #" << data.getNumber();
+	cout << "\nÊÎÌÌÓÍÈÊÀÖÈÎÍÍÛÉ ÌÎÄÓËÜ .2_2: ïîëó÷åíî ñîîáùåíèÿ î çàâåðøåíèè #" << data.getNumber();
 }
 
 Communicator::Communicator(TChannel* NavChannel, TChannel* ContrChannel)

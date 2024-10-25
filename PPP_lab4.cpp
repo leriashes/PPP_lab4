@@ -16,13 +16,13 @@ int main()
     TChannel Nav;
     TChannel Img;
 
-    TReliableChannel NewPath;
-    TReliableChannel Path;
-    TReliableChannel Finish;
+    TReliableChannel NewPath, Path, Finish;
+    TReliableChannel Start, Stop;
+    TReliableChannel Take, Ready;
 
     Camera camera(&Img);
     Communicator communicator(&NewPath, &Finish);
-    Controller controller;
+    Controller controller(&Path, &NewPath, &Img, &Start, &Stop, &Take, &Ready, &Finish);
     GPS gps(&Nav);
     Manipulator manipulator;
     Mover mover;
@@ -38,6 +38,9 @@ int main()
     ThreadWrap navigatorThread(&navigator);
     navigatorThread.startThread();
 
+    ThreadWrap controllerThread(&controller);
+    controllerThread.startThread();
+
     ThreadWrap communicatorThread(&communicator);
     communicatorThread.startThread();
 
@@ -45,6 +48,7 @@ int main()
     cameraThread.waitForThread();
     navigatorThread.waitForThread();
     communicatorThread.waitForThread();
+    controllerThread.waitForThread();
 
     return 0;
 }

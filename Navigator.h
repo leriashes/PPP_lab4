@@ -8,8 +8,6 @@ private:
 	TChannel* Nav;
 	TChannel* Path;
 
-	int version;
-
 	void getPathData();
 	void getGPSData();
 	void sendData();
