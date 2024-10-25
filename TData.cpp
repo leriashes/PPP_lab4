@@ -1,10 +1,9 @@
 #include "TData.h"
 
-TData::TData(int number, int moduleNumber, string data)
+TData::TData(int number, int moduleNumber)
 {
 	this->number = number;
 	this->moduleNumber = moduleNumber;
-	this->data = data;
 }
 
 int TData::getNumber()
@@ -15,9 +14,4 @@ int TData::getNumber()
 int TData::getModuleNumber()
 {
 	return this->moduleNumber;
-}
-
-string TData::getData()
-{
-	return this->data;
 }

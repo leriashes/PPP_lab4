@@ -7,14 +7,12 @@ class TData
 private:
 	int number;
 	int moduleNumber;
-	string data;
 
 public:
-	TData(int number, int moduleNumber, string data);
+	TData(int number, int moduleNumber);
 	
 	int getNumber();
 	int getModuleNumber();
-	string getData();
 
 	TData() = default;
 };

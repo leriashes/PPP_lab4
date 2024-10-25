@@ -4,7 +4,7 @@ void Communicator::sendData(int count)
 {
 	cout << "\n\nÊÎÌÌÓÍÈÊÀÖÈÎÍÍÛÉ ÌÎÄÓËÜ .1: îòïðàâêà òî÷êè íàçíà÷åíèÿ #" << count << "...";
 
-	TData data(count, 1, "òî÷êà íàçíà÷åíèÿ");
+	TData data(count, 1);
 	NewPath->put(data);
 }
 

@@ -2,7 +2,7 @@
 
 void GPS::sendData(int count)
 {
-	TData data(count, 3, "текущее местоположение");
+	TData data(count, 3);
 	Nav->put(data);
 
 	cout << "\n    GPS: отправлено местоположение #" << count;

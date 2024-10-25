@@ -14,7 +14,7 @@ void Manipulator::sendReady()
 {
 	cout << "\nМАНИПУЛЯТОР .2: отправка сообщения о завершении сбора грунта в Контроллер...";
 
-	TData data(0, 6, "грунт собран");
+	TData data(0, 6);
 	Ready->put(data);
 }
 

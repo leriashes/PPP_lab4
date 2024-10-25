@@ -2,7 +2,7 @@
 
 void Camera::sendData(int count)
 {
-	TData data(count, 7, "ñíèìîê");
+	TData data(count, 7);
 	Img->put(data);
 
 	cout << "\n    ÊÀÌÅĞÀ: îòïğàâëåí ñíèìîê #" << count;

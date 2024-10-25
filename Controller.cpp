@@ -84,7 +84,7 @@ void Controller::sendStartMoving()
 {
 	cout << "\nКОНТРОЛЛЕР .3: отправка команды в Модуль передвижения...";
 
-	TData data(0, 4, "5 метров");
+	TData data(0, 4);
 	Start->put(data);
 }
 
@@ -102,7 +102,7 @@ void Controller::sendStopData(bool obstacle)
 {
 	cout << "\nКОНТРОЛЛЕР .5: отправка сообщения об остановке в Навигатор...";
 
-	TData data(obstacle, 4, "остановились");
+	TData data(obstacle, 4);
 	NewPath->put(data);
 }
 
@@ -110,7 +110,7 @@ void Controller::sendTake()
 {
 	cout << "\nКОНТРОЛЛЕР .6: отправка команды 'начать сбор грунта' в Манипулятор...";
 
-	TData data(0, 4, "собрать");
+	TData data(0, 4);
 	Take->put(data);
 }
 
@@ -128,6 +128,6 @@ void Controller::sendFinish()
 {
 	cout << "\nКОНТРОЛЛЕР .8: отправка сообщения о завершении миссии в Коммуникационный модуль...";
 
-	TData data(0, 4, "закончили");
+	TData data(0, 4);
 	Finish->put(data);
 }

@@ -41,7 +41,7 @@ void Navigator::sendData()
 {
 	cout << "\nНАВИГАТОР .3: отправка маршрута на Контроллер... (отрезков осталось : " << len << ")";
 
-	TData data(len, 3, "команда маршрута");
+	TData data(len, 3);
 	Path->put(data);
 }
 
