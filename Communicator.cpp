@@ -15,7 +15,7 @@ void Communicator::getData(int count)
 	TData data;
 	Finish->get(&data);
 
-	cout << "\nÊÎÌÌÓÍÈÊÀÖÈÎÍÍÛÉ ÌÎÄÓËÜ .2_2: ïîëó÷åíî ñîîáùåíèå î çàâåğøåíèè ìèññèè #" << count << "\n\n\n";
+	cout << "\nÊÎÌÌÓÍÈÊÀÖÈÎÍÍÛÉ ÌÎÄÓËÜ .2_2: ïîëó÷åíî ñîîáùåíèå î çàâåğøåíèè ìèññèè #" << count << "\n";
 }
 
 Communicator::Communicator(TChannel* NavChannel, TChannel* ContrChannel)

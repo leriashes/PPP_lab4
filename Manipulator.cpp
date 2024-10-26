@@ -34,5 +34,7 @@ void Manipulator::start()
 		//this_thread::sleep_for(chrono::milliseconds(10000));
 
 		sendReady();
+
+		cout << "\n";
 	}
 }

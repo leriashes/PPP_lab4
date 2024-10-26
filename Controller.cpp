@@ -21,8 +21,6 @@ void Controller::start()
 
 	while (true)
 	{
-		cout << "\n\n            ÖÈÊË " << i++ << "\n\n";
-
 		bool path = getPathData();
 
 		if (path)
@@ -43,6 +41,8 @@ void Controller::start()
 			getReady();
 			sendFinish();
 		}
+
+		cout << "\n";
 	}
 }
 

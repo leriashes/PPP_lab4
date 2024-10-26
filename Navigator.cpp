@@ -63,5 +63,7 @@ void Navigator::start()
 		//this_thread::sleep_for(chrono::milliseconds(10000));
 		
 		sendData();
+
+		cout << "\n";
 	}
 }

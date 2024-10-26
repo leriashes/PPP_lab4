@@ -9,15 +9,12 @@ TChannel::TChannel(const char* name, size_t size) :
     if (fileMem == NULL) 
     {
         fileMem = CreateFileMapping(INVALID_HANDLE_VALUE, NULL, PAGE_READWRITE, 0, static_cast<DWORD>(size), (wstring(name, name + strlen(name))).c_str());
-        cout << "\nСоздан файл для канала " << name << endl;
     }
 
     // Отображаем файл на память
     if (fileMem != NULL) 
     {
         buffer = MapViewOfFile(fileMem, FILE_MAP_ALL_ACCESS, 0, 0, size);
-
-        cout << "\nОткрыт файл для канала " << name << endl;
 
         if (buffer == NULL) 
             cerr << "Ошибка: не удалось отобразить файл в память." << endl;

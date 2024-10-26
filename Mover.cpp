@@ -34,5 +34,7 @@ void Mover::start()
 		//this_thread::sleep_for(chrono::milliseconds(15000));
 
 		sendStopMoving();
+
+		cout << "\n";
 	}
 }
