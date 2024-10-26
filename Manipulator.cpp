@@ -31,7 +31,7 @@ void Manipulator::start()
 		getTake();
 
 		cout << "\nÌÀÍÈÏÓËßÒÎÐ: ñáîð ãðóíòà...";
-		//this_thread::sleep_for(chrono::milliseconds(10000));
+		this_thread::sleep_for(chrono::milliseconds(10000));
 
 		sendReady();
 

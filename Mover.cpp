@@ -31,7 +31,7 @@ void Mover::start()
 		getStartMoving();
 
 		cout << "\nÌÎÄÓËÜ ÏÅÐÅÄÂÈÆÅÍÈß: äâèæåíèå...";
-		//this_thread::sleep_for(chrono::milliseconds(15000));
+		this_thread::sleep_for(chrono::milliseconds(15000));
 
 		sendStopMoving();
 
