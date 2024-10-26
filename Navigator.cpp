@@ -60,7 +60,7 @@ void Navigator::start()
 		getGPSData();
 		
 		cout << "\nÍÀÂÈÃÀÒÎÐ: ïîñòðîåíèå ìàðøðóòà...";
-		this_thread::sleep_for(chrono::milliseconds(10000));
+		//this_thread::sleep_for(chrono::milliseconds(10000));
 		
 		sendData();
 	}

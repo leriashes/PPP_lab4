@@ -17,8 +17,12 @@ Controller::Controller(TChannel* Path, TChannel* NewPath, TChannel* Img, TChanne
 
 void Controller::start()
 {
+	int i = 1;
+
 	while (true)
 	{
+		cout << "\n\n            ÖÈÊË " << i++ << "\n\n";
+
 		bool path = getPathData();
 
 		if (path)

@@ -35,6 +35,6 @@ TReliableChannel::TReliableChannel(const char* name, size_t size) : TChannel(nam
 
 TReliableChannel::~TReliableChannel()
 {
-    delete this->free;
-    delete this->empty;
+    /*delete this->free;
+    delete this->empty;*/
 }
