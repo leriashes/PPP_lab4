@@ -3,14 +3,14 @@
 void GPS::sendData(int count)
 {
 	TData data(count, 3);
-	Nav->put(data);
+	Coords->put(data);
 
 	cout << "\n    GPS: отправлено местоположение #" << count;
 }
 
 GPS::GPS(TChannel* channel)
 {
-	Nav = channel;
+	Coords = channel;
 }
 
 void GPS::start()

@@ -4,7 +4,7 @@
 class GPS : public MoonwalkerModule
 {
 private:
-	TChannel* Nav;
+	TChannel* Coords;
 	void sendData(int count);
 
 public:

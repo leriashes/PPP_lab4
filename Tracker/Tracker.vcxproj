@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{fdab8513-a5fb-443d-a817-d38bf77a3f11}</ProjectGuid>
-    <RootNamespace>PPPlab4</RootNamespace>
+    <ProjectGuid>{fa5ee118-cba3-4448-93a6-949a689d1bd3}</ProjectGuid>
+    <RootNamespace>Tracker</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,37 +127,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Communicator.cpp" />
-    <ClCompile Include="Controller.cpp" />
-    <ClCompile Include="GPS.cpp" />
-    <ClCompile Include="Manipulator.cpp" />
-    <ClCompile Include="MoonwalkerModule.cpp" />
-    <ClCompile Include="Mover.cpp" />
-    <ClCompile Include="Navigator.cpp" />
-    <ClCompile Include="PPP_lab4.cpp" />
-    <ClCompile Include="TChannel.cpp" />
-    <ClCompile Include="TData.cpp" />
-    <ClCompile Include="ThreadWrap.cpp" />
-    <ClCompile Include="Tracker.cpp" />
-    <ClCompile Include="TReliableChannel.cpp" />
-    <ClCompile Include="TSemaphore.cpp" />
+    <ClCompile Include="..\MoonwalkerModule.cpp" />
+    <ClCompile Include="..\TChannel.cpp" />
+    <ClCompile Include="..\TData.cpp" />
+    <ClCompile Include="..\ThreadWrap.cpp" />
+    <ClCompile Include="..\Tracker.cpp" />
+    <ClCompile Include="..\TReliableChannel.cpp" />
+    <ClCompile Include="..\TSemaphore.cpp" />
+    <ClCompile Include="TrackerMain.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Camera.h" />
-    <ClInclude Include="Communicator.h" />
-    <ClInclude Include="Controller.h" />
-    <ClInclude Include="GPS.h" />
-    <ClInclude Include="Manipulator.h" />
-    <ClInclude Include="MoonwalkerModule.h" />
-    <ClInclude Include="Mover.h" />
-    <ClInclude Include="Navigator.h" />
-    <ClInclude Include="TChannel.h" />
-    <ClInclude Include="TData.h" />
-    <ClInclude Include="ThreadWrap.h" />
-    <ClInclude Include="Tracker.h" />
-    <ClInclude Include="TReliableChannel.h" />
-    <ClInclude Include="TSemaphore.h" />
+    <ClInclude Include="..\MoonwalkerModule.h" />
+    <ClInclude Include="..\TChannel.h" />
+    <ClInclude Include="..\TData.h" />
+    <ClInclude Include="..\ThreadWrap.h" />
+    <ClInclude Include="..\Tracker.h" />
+    <ClInclude Include="..\TReliableChannel.h" />
+    <ClInclude Include="..\TSemaphore.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
