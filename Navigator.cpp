@@ -1,17 +1,23 @@
 #include "Navigator.h"
 
-void Navigator::getPathData()
+bool Navigator::getQueryData()
 {
-	cout << "\nНАВИГАТОР .1_1: ожидание точки назначения...";
+	cout << "\nНАВИГАТОР .1_1: ожидание...";
 
 	TData data;
-	NewPath->get(&data);
+	Nav->get(&data);
 
 	if (data.getModuleNumber() == 1)
 	{
 		cout << "\nНАВИГАТОР .1_2: получена точка назначения #" << data.getNumber();
 
 		len = rand() % 3 + 1;
+	}
+	else if (data.getModuleNumber() == 8)
+	{
+		cout << "\nНАВИГАТОР .1_2: получен запрос на текущее местоположение #" << data.getNumber();
+
+		return false;
 	}
 	else
 	{
@@ -25,6 +31,8 @@ void Navigator::getPathData()
 			len -= 1;
 		}
 	}
+
+	return true;
 }
 
 void Navigator::getGPSData()
@@ -32,12 +40,14 @@ void Navigator::getGPSData()
 	cout << "\nНАВИГАТОР .2_1: ожидание местоположения от GPS...";
 
 	TData data;
-	Nav->get(&data);
+	Coords->get(&data);
 
-	cout << "\nНАВИГАТОР .2_2: получено местоположение #" << data.getNumber();
+	location = data.getNumber();
+
+	cout << "\nНАВИГАТОР .2_2: получено местоположение #" << location;
 }
 
-void Navigator::sendData()
+void Navigator::sendPath()
 {
 	cout << "\nНАВИГАТОР .3: отправка маршрута на Контроллер... (отрезков осталось : " << len << ")";
 
@@ -45,24 +55,40 @@ void Navigator::sendData()
 	Path->put(data);
 }
 
-Navigator::Navigator(TChannel* CommunicatorChannel, TChannel* GPSChannel, TChannel* ContrChannel)
+void Navigator::sendLocation()
 {
-	NewPath = CommunicatorChannel;
-	Nav = GPSChannel;
+	cout << "\nНАВИГАТОР .4: отправка текущего местоположения в модуль отслеживания...";
+
+	TData data(location, 3);
+	Location->put(data);
+}
+
+Navigator::Navigator(TChannel* channel, TChannel* GPSchannel, TChannel* ContrChannel, TChannel* TrackerChannel)
+{
+	Nav = channel;
+	Coords = GPSchannel;
 	Path = ContrChannel;
+	Location = TrackerChannel;
 }
 
 void Navigator::start()
 {
 	while (true)
 	{
-		getPathData();
+		bool path = getQueryData();
 		getGPSData();
-		
-		cout << "\nНАВИГАТОР: построение маршрута...";
-		this_thread::sleep_for(chrono::milliseconds(10000));
-		
-		sendData();
+
+		if (path)
+		{
+			cout << "\nНАВИГАТОР: построение маршрута...";
+			this_thread::sleep_for(chrono::milliseconds(10000));
+
+			sendPath();
+		}
+		else
+		{
+			sendLocation();
+		}
 
 		cout << "\n";
 	}
