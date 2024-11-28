@@ -11,6 +11,7 @@ private:
 
 	int len;
 	int location;
+	int num;
 
 	bool getQueryData();
 	void getGPSData();
@@ -19,6 +20,7 @@ private:
 
 public:
 	Navigator(TChannel* channel, TChannel* GPSchannel, TChannel* ContrChannel, TChannel* TrackerChannel);
+	Navigator(int num, TChannel* channel, TChannel* GPSchannel, TChannel* ContrChannel, TChannel* TrackerChannel);
 	void start() override;
 };
 
