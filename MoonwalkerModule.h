@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <ctime>
 #include "TReliableChannel.h"
+#include "CVChannel.h"
 using namespace std;
 
 class MoonwalkerModule

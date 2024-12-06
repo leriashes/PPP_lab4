@@ -5,7 +5,7 @@ class Controller : public MoonwalkerModule
 {
 private:
 	TChannel* Path;
-	TChannel* NewPath;
+	CVChannel* NewPath;
 	TChannel* Finish;
 
 	TChannel* Img; 
@@ -21,13 +21,13 @@ private:
 
 	void sendStartMoving();
 	void getStopMoving();
-	void sendStopData(bool obstacle);
+	int sendStopData(bool obstacle);
 	void sendTake();
 	void getReady();
 	void sendFinish();
 
 public:
-	Controller(TChannel* Path, TChannel* NewPath, TChannel* Img, TChannel* Start, TChannel* Stop, TChannel* Take, TChannel* Ready, TChannel* Finish);
+	Controller(TChannel* Path, CVChannel* NewPath, TChannel* Img, TChannel* Start, TChannel* Stop, TChannel* Take, TChannel* Ready, TChannel* Finish);
 	void start() override;
 };
 

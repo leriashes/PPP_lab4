@@ -32,9 +32,3 @@ TReliableChannel::TReliableChannel(const char* name, size_t size) : TChannel(nam
 {
     free = new TSemaphore((string(name) + "_semFree").c_str(), 1);
 }
-
-TReliableChannel::~TReliableChannel()
-{
-    /*delete this->free;
-    delete this->empty;*/
-}

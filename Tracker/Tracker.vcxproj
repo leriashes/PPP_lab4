@@ -134,6 +134,7 @@
     <ClCompile Include="..\Tracker.cpp" />
     <ClCompile Include="..\TReliableChannel.cpp" />
     <ClCompile Include="..\TSemaphore.cpp" />
+    <ClCompile Include="CVChannel.cpp" />
     <ClCompile Include="TrackerMain.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +145,7 @@
     <ClInclude Include="..\Tracker.h" />
     <ClInclude Include="..\TReliableChannel.h" />
     <ClInclude Include="..\TSemaphore.h" />
+    <ClInclude Include="CVChannel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

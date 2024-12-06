@@ -130,6 +130,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Communicator.cpp" />
     <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="CVChannel.cpp" />
     <ClCompile Include="GPS.cpp" />
     <ClCompile Include="Manipulator.cpp" />
     <ClCompile Include="MoonwalkerModule.cpp" />
@@ -147,6 +148,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Communicator.h" />
     <ClInclude Include="Controller.h" />
+    <ClInclude Include="CVChannel.h" />
     <ClInclude Include="GPS.h" />
     <ClInclude Include="Manipulator.h" />
     <ClInclude Include="MoonwalkerModule.h" />

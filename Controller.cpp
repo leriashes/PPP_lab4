@@ -1,6 +1,6 @@
 #include "Controller.h"
 
-Controller::Controller(TChannel* Path, TChannel* NewPath, TChannel* Img, TChannel* Start, TChannel* Stop, TChannel* Take, TChannel* Ready, TChannel* Finish)
+Controller::Controller(TChannel* Path, CVChannel* NewPath, TChannel* Img, TChannel* Start, TChannel* Stop, TChannel* Take, TChannel* Ready, TChannel* Finish)
 {
 	this->Path = Path;
 	this->NewPath = NewPath;
@@ -33,7 +33,8 @@ void Controller::start()
 				getStopMoving();
 			}
 
-			sendStopData(obstacle);
+			if (sendStopData(obstacle))
+				break;
 		}
 		else
 		{
@@ -102,12 +103,12 @@ void Controller::getStopMoving()
 	cout << "\nКОНТРОЛЛЕР .4_2: получено сообщение о завершении движения с Модуля передвижения";
 }
 
-void Controller::sendStopData(bool obstacle)
+int Controller::sendStopData(bool obstacle)
 {
 	cout << "\nКОНТРОЛЛЕР .5: отправка сообщения об остановке в Навигатор...";
 
 	TData data(obstacle, 4);
-	NewPath->put(data);
+	return NewPath->put(data);
 }
 
 void Controller::sendTake()

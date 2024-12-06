@@ -1,6 +1,6 @@
 #include "Navigator.h"
 
-bool Navigator::getQueryData()
+int Navigator::getQueryData()
 {
 	if (num)
 	{
@@ -13,7 +13,8 @@ bool Navigator::getQueryData()
 	
 
 	TData data;
-	Nav->get(&data);
+	if (Nav->get(&data))
+		return -1;
 
 	if (data.getModuleNumber() == 1)
 	{
@@ -25,8 +26,6 @@ bool Navigator::getQueryData()
 		{
 			cout << "\nНАВИГАТОР .1_2: получена точка назначения #" << data.getNumber();
 		}
-
-		len = rand() % 3 + 1;
 	}
 	else if (data.getModuleNumber() == 8)
 	{
@@ -39,7 +38,7 @@ bool Navigator::getQueryData()
 			cout << "\nНАВИГАТОР .1_2: получен запрос на текущее местоположение #" << data.getNumber();
 		}
 
-		return false;
+		return 0;
 	}
 	else
 	{
@@ -64,12 +63,10 @@ bool Navigator::getQueryData()
 			{
 				cout << "\nНАВИГАТОР .1_2: получено сообщение от Контроллера: продолжить движение по маршруту";
 			}
-			
-			len -= 1;
 		}
 	}
 
-	return true;
+	return 1;
 }
 
 void Navigator::getGPSData()
@@ -102,14 +99,14 @@ void Navigator::sendPath()
 {
 	if (num)
 	{
-		cout << "\n" << num << " НАВИГАТОР .3: отправка маршрута на Контроллер... (отрезков осталось : " << len << ")";
+		cout << "\n" << num << " НАВИГАТОР .3: отправка маршрута на Контроллер...";
 	}
 	else
 	{
-		cout << "\nНАВИГАТОР .3: отправка маршрута на Контроллер... (отрезков осталось : " << len << ")";
+		cout << "\nНАВИГАТОР .3: отправка маршрута на Контроллер...";
 	}
 
-	TData data(len, 3);
+	TData data(rand() % 3, 3);
 	Path->put(data);
 }
 
@@ -128,7 +125,7 @@ void Navigator::sendLocation()
 	Location->put(data);
 }
 
-Navigator::Navigator(TChannel* channel, TChannel* GPSchannel, TChannel* ContrChannel, TChannel* TrackerChannel)
+Navigator::Navigator(CVChannel* channel, TChannel* GPSchannel, TChannel* ContrChannel, TChannel* TrackerChannel)
 {
 	Nav = channel;
 	Coords = GPSchannel;
@@ -137,7 +134,7 @@ Navigator::Navigator(TChannel* channel, TChannel* GPSchannel, TChannel* ContrCha
 	this->num = 0;
 }
 
-Navigator::Navigator(int num, TChannel* channel, TChannel* GPSchannel, TChannel* ContrChannel, TChannel* TrackerChannel)
+Navigator::Navigator(int num, CVChannel* channel, TChannel* GPSchannel, TChannel* ContrChannel, TChannel* TrackerChannel)
 {
 	Nav = channel;
 	Coords = GPSchannel;
@@ -150,10 +147,14 @@ void Navigator::start()
 {
 	while (true)
 	{
-		bool path = getQueryData();
+		int path = getQueryData();
+
+		if (path == -1)
+			break;
+
 		getGPSData();
 
-		if (path)
+		if (path > 0)
 		{
 			if (num)
 			{
@@ -170,6 +171,7 @@ void Navigator::start()
 		}
 		else
 		{
+			this_thread::sleep_for(chrono::milliseconds(5000));
 			sendLocation();
 		}
 

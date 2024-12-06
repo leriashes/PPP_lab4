@@ -2,7 +2,7 @@
 #include "TChannel.h"
 class TReliableChannel : public TChannel
 {
-private:
+protected:
 	TSemaphore* free;
 
 public:
@@ -10,6 +10,5 @@ public:
 	void get(TData* resultData) override;
 
 	TReliableChannel(const char* name, size_t size);
-	~TReliableChannel();
 };
 

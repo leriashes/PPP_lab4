@@ -1,11 +1,12 @@
 #include "Communicator.h"
 
-void Communicator::sendData(int count)
+int Communicator::sendData(int count)
 {
 	cout << "\n\nÊÎÌÌÓÍÈÊÀÖÈÎÍÍÛÉ ÌÎÄÓËÜ .1: îòïðàâêà òî÷êè íàçíà÷åíèÿ #" << count << "...";
 
 	TData data(count, 1);
-	NewPath->put(data);
+
+	return NewPath->put(data);
 }
 
 void Communicator::getData(int count)
@@ -18,7 +19,7 @@ void Communicator::getData(int count)
 	cout << "\nÊÎÌÌÓÍÈÊÀÖÈÎÍÍÛÉ ÌÎÄÓËÜ .2_2: ïîëó÷åíî ñîîáùåíèå î çàâåðøåíèè ìèññèè #" << count << "\n";
 }
 
-Communicator::Communicator(TChannel* NavChannel, TChannel* ContrChannel)
+Communicator::Communicator(CVChannel* NavChannel, TChannel* ContrChannel)
 {
 	NewPath = NavChannel;
 	Finish = ContrChannel;
@@ -28,9 +29,10 @@ void Communicator::start()
 {
 	int i = 1;
 
-	while (i < 3)
+	while (i < 2)
 	{
-		sendData(i);
+		if (sendData(i))
+			break;
 		getData(i);
 
 		i++;

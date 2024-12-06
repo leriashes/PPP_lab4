@@ -4,14 +4,14 @@
 class Tracker : public MoonwalkerModule
 {
 private:
-	TChannel* Nav;
+	CVChannel* Nav;
 	TChannel* Location;
 
-	void sendData(int count);
+	int sendData(int count);
 	void getData(int count);
 
 public:
-	Tracker(TChannel* NavChannel, TChannel* LocationChannel);
+	Tracker(CVChannel* NavChannel, TChannel* LocationChannel);
 	void start() override;
 };
 
