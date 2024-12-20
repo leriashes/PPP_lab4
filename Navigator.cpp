@@ -1,68 +1,125 @@
 #include "Navigator.h"
 
-void Navigator::getPathData()
+void Navigator::getQueryData()
 {
-	cout << "\nНАВИГАТОР .1_1: ожидание точки назначения...";
+	if (num)
+	{
+		cout << "\n" << num << " НАВИГАТОР .1_1: ожидание...";
+	}
+	else
+	{
+		cout << "\nНАВИГАТОР .1_1: ожидание...";
+	}
+	
 
 	TData data;
-	NewPath->get(&data);
+	Nav->get(&data);
 
 	if (data.getModuleNumber() == 1)
 	{
-		cout << "\nНАВИГАТОР .1_2: получена точка назначения #" << data.getNumber();
-
-		len = rand() % 3 + 1;
+		if (num)
+		{
+			cout << "\n" << num << " НАВИГАТОР .1_2: получена точка назначения #" << data.getNumber();
+		}
+		else
+		{
+			cout << "\nНАВИГАТОР .1_2: получена точка назначения #" << data.getNumber();
+		}
 	}
 	else
 	{
 		if (data.getNumber() == 1)
 		{
-			cout << "\nНАВИГАТОР .1_2: получено сообщение от Контроллера: препятствие - необходимо перестроить маршрут";
+			if (num)
+			{
+				cout << "\n" << num << " НАВИГАТОР .1_2: получено сообщение от Контроллера: препятствие - необходимо перестроить маршрут";
+			}
+			else
+			{
+				cout << "\nНАВИГАТОР .1_2: получено сообщение от Контроллера: препятствие - необходимо перестроить маршрут";
+			}
 		}
 		else
 		{
-			cout << "\nНАВИГАТОР .1_2: получено сообщение от Контроллера: продолжить движение по маршруту";
-			len -= 1;
+			if (num)
+			{
+				cout << "\n" << num << " НАВИГАТОР .1_2: получено сообщение от Контроллера: продолжить движение по маршруту";
+			}
+			else
+			{
+				cout << "\nНАВИГАТОР .1_2: получено сообщение от Контроллера: продолжить движение по маршруту";
+			}
 		}
 	}
-}
 
 void Navigator::getGPSData()
 {
 	cout << "\nНАВИГАТОР .2_1: ожидание местоположения от GPS...";
 
 	TData data;
-	Nav->get(&data);
+	Coords->get(&data);
 
-	cout << "\nНАВИГАТОР .2_2: получено местоположение #" << data.getNumber();
+	location = data.getNumber();
+
+	if (num)
+	{
+		cout << "\n" << num << " НАВИГАТОР .2_2: получено местоположение #" << location;
+	}
+	else
+	{
+		cout << "\nНАВИГАТОР .2_2: получено местоположение #" << location;
+	}
 }
 
 void Navigator::sendData()
 {
-	cout << "\nНАВИГАТОР .3: отправка маршрута на Контроллер... (отрезков осталось : " << len << ")";
+	if (num)
+	{
+		cout << "\n" << num << " НАВИГАТОР .3: отправка маршрута на Контроллер...";
+	}
+	else
+	{
+		cout << "\nНАВИГАТОР .3: отправка маршрута на Контроллер...";
+	}
 
-	TData data(len, 3);
+	TData data(rand() % 3, 3);
 	Path->put(data);
 }
 
-Navigator::Navigator(TChannel* CommunicatorChannel, TChannel* GPSChannel, TChannel* ContrChannel)
+Navigator::Navigator(TChannel* channel, TChannel* GPSchannel, TChannel* ContrChannel)
 {
-	NewPath = CommunicatorChannel;
-	Nav = GPSChannel;
+	Nav = channel;
+	Coords = GPSchannel;
 	Path = ContrChannel;
+	this->num = 0;
 }
+
+Navigator::Navigator(int num, TChannel* channel, TChannel* GPSchannel, TChannel* ContrChannel)
+{
+	Nav = channel;
+	Coords = GPSchannel;
+	Path = ContrChannel;
+	this->num = num;
+}
+
 
 void Navigator::start()
 {
 	while (true)
-	{
-		getPathData();
-		getGPSData();
-		
-		cout << "\nНАВИГАТОР: построение маршрута...";
+		getQueryData();
+
+		if (num)
+		{
+			cout << "\n" << num << " НАВИГАТОР: построение маршрута...";
+		}
+		else
+		{
+			cout << "\nНАВИГАТОР: построение маршрута...";
+		}
+
 		this_thread::sleep_for(chrono::milliseconds(10000));
-		
-		sendData();
+
+		sendPath();
 
 		cout << "\n";
 	}

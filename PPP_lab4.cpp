@@ -1,62 +1,45 @@
 ﻿#include <iostream>
-#include "Camera.h"
-#include "Communicator.h"
+#include <windows.h>
+#include "GPS.h"
 #include "Controller.h"
 #include "GPS.h"
 #include "Manipulator.h"
 #include "Mover.h"
 #include "Navigator.h"
 #include "ThreadWrap.h"
+#include "TEstafeta.h"
 using namespace std;
+
 
 int main()
 {
     setlocale(LC_ALL, "rus");
 
-    TChannel Nav("NAV", 1024);
-    TChannel Img("IMG", 1024);
+    TEstafeta Coords("Coords", 1024);
 
-    TReliableChannel NewPath("NewPath", 1024), Path("Path", 1024), Finish("Finish", 1024);
-    TReliableChannel Start("Start", 1024), Stop("Stop", 1024);
-    TReliableChannel Take("Take", 1024), Ready("Ready", 1024);
+    TReliableChannel Nav("Nav", 1024);
+    TReliableChannel Path("Path", 1024);
 
-    Camera camera(&Img);
-    Communicator communicator(&NewPath, &Finish);
-    Controller controller(&Path, &NewPath, &Img, &Start, &Stop, &Take, &Ready, &Finish);
-    GPS gps(&Nav);
-    Manipulator manipulator(&Take, &Ready);
-    Mover mover(&Start, &Stop);
-    Navigator navigator(&NewPath, &Nav, &Path);
+    GPS gps(&Coords);
+    Navigator navigator1(1, &Nav, &Coords, &Path), navigator2(2, &Nav, &Coords, &Path);
+    Tracker tracker1(&Coords), tracker2(&Coords), tracker3(&Coords);
 
+    ThreadWrap navigator1Thread(&navigator1), navigator2Thread(&navigator2);
+    navigator1Thread.startThread();
+    navigator2Thread.startThread();
 
     ThreadWrap gpsThread(&gps);
     gpsThread.startThread();
 
-    ThreadWrap cameraThread(&camera);
-    cameraThread.startThread();
-
-    ThreadWrap navigatorThread(&navigator);
-    navigatorThread.startThread();
-
-    ThreadWrap controllerThread(&controller);
-    controllerThread.startThread();
-
-    ThreadWrap communicatorThread(&communicator);
-    communicatorThread.startThread();
-
     ThreadWrap manipulatorThread(&manipulator);
     manipulatorThread.startThread();
 
-    ThreadWrap moverThread(&mover);
-    moverThread.startThread();
-
+    navigator1Thread.waitForThread();
+    navigator2Thread.waitForThread();
     gpsThread.waitForThread();
-    cameraThread.waitForThread();
-    navigatorThread.waitForThread();
-    communicatorThread.waitForThread();
-    controllerThread.waitForThread();
-    manipulatorThread.waitForThread();
-    moverThread.waitForThread();
+    tracker1Thread.waitForThread();
+    tracker2Thread.waitForThread();
+    tracker3Thread.waitForThread();
 
     return 0;
 }

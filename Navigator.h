@@ -4,18 +4,20 @@
 class Navigator : public MoonwalkerModule
 {
 private:
-	TChannel* NewPath;
 	TChannel* Nav;
+	TChannel* Coords;
 	TChannel* Path;
 
-	int len;
+	int location;
+	int num;
 
-	void getPathData();
+	int getQueryData();
 	void getGPSData();
-	void sendData();
+	void sendPath();
 
 public:
-	Navigator(TChannel* CommunicatorChannel, TChannel* GPSchannel, TChannel* ContrChannel);
+	Navigator(TChannel* channel, TChannel* GPSchannel, TChannel* ContrChannel);
+	Navigator(int num, TChannel* channel, TChannel* GPSchannel, TChannel* ContrChannel);
 	void start() override;
 };
 

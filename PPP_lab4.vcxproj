@@ -130,32 +130,40 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Communicator.cpp" />
     <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="Estafeta.cpp" />
     <ClCompile Include="GPS.cpp" />
     <ClCompile Include="Manipulator.cpp" />
     <ClCompile Include="MoonwalkerModule.cpp" />
     <ClCompile Include="Mover.cpp" />
     <ClCompile Include="Navigator.cpp" />
     <ClCompile Include="PPP_lab4.cpp" />
+    <ClCompile Include="Reader.cpp" />
     <ClCompile Include="TChannel.cpp" />
     <ClCompile Include="TData.cpp" />
+    <ClCompile Include="TEstafeta.cpp" />
     <ClCompile Include="ThreadWrap.cpp" />
     <ClCompile Include="TReliableChannel.cpp" />
     <ClCompile Include="TSemaphore.cpp" />
+    <ClCompile Include="Writer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Communicator.h" />
     <ClInclude Include="Controller.h" />
+    <ClInclude Include="Estafeta.h" />
     <ClInclude Include="GPS.h" />
     <ClInclude Include="Manipulator.h" />
     <ClInclude Include="MoonwalkerModule.h" />
     <ClInclude Include="Mover.h" />
     <ClInclude Include="Navigator.h" />
+    <ClInclude Include="Reader.h" />
     <ClInclude Include="TChannel.h" />
     <ClInclude Include="TData.h" />
+    <ClInclude Include="TEstafeta.h" />
     <ClInclude Include="ThreadWrap.h" />
     <ClInclude Include="TReliableChannel.h" />
     <ClInclude Include="TSemaphore.h" />
+    <ClInclude Include="Writer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
