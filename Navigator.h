@@ -11,7 +11,7 @@ private:
 	int location;
 	int num;
 
-	int getQueryData();
+	void getQueryData();
 	void getGPSData();
 	void sendPath();
 

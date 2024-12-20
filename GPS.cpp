@@ -2,10 +2,12 @@
 
 void GPS::sendData(int count)
 {
-	TData data(count, 3);
-	Nav->put(data);
+	cout << "\n  GPS: буду отправлять местоположение #" << count;
 
-	cout << "\n    GPS: отправлено местоположение #" << count;
+	TData data(count, 3);
+	Nav->put(data, 1);
+
+	cout << "\n  GPS: отправлено местоположение #" << count;
 }
 
 GPS::GPS(TChannel* channel)
@@ -20,6 +22,6 @@ void GPS::start()
 	while (true)
 	{
 		sendData(count++);
-		this_thread::sleep_for(chrono::milliseconds(2000));
+		this_thread::sleep_for(chrono::milliseconds(500));
 	}
 }

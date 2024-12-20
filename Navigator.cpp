@@ -4,16 +4,16 @@ void Navigator::getQueryData()
 {
 	if (num)
 	{
-		cout << "\n" << num << " НАВИГАТОР .1_1: ожидание...";
+		cout << "\n" << num << " НАВИГАТОР .1_1: ожидание точки назначения от коммуникационного модуля...";
 	}
 	else
 	{
-		cout << "\nНАВИГАТОР .1_1: ожидание...";
+		cout << "\nНАВИГАТОР .1_1: ожидание точки назначения от коммуникационного модуля...";
 	}
-	
+
 
 	TData data;
-	Nav->get(&data);
+	Nav->get(&data, num);
 
 	if (data.getModuleNumber() == 1)
 	{
@@ -51,13 +51,14 @@ void Navigator::getQueryData()
 			}
 		}
 	}
+}
 
 void Navigator::getGPSData()
 {
 	cout << "\nНАВИГАТОР .2_1: ожидание местоположения от GPS...";
 
 	TData data;
-	Coords->get(&data);
+	Coords->get(&data, num);
 
 	location = data.getNumber();
 
@@ -71,7 +72,7 @@ void Navigator::getGPSData()
 	}
 }
 
-void Navigator::sendData()
+void Navigator::sendPath()
 {
 	if (num)
 	{
@@ -105,8 +106,9 @@ Navigator::Navigator(int num, TChannel* channel, TChannel* GPSchannel, TChannel*
 
 void Navigator::start()
 {
-	while (true)
+	while (true) {
 		getQueryData();
+		getGPSData();
 
 		if (num)
 		{
@@ -117,7 +119,7 @@ void Navigator::start()
 			cout << "\nНАВИГАТОР: построение маршрута...";
 		}
 
-		this_thread::sleep_for(chrono::milliseconds(10000));
+		this_thread::sleep_for(chrono::milliseconds(1000));
 
 		sendPath();
 

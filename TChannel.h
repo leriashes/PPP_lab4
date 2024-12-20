@@ -14,6 +14,8 @@ protected:
 public:
     virtual void put(TData t);
     virtual void get(TData* resultData);
+    virtual void put(TData t, int num);
+    virtual void get(TData* resultData, int num);
     TChannel(const char* name, size_t size);
     virtual ~TChannel();
 };

@@ -49,6 +49,16 @@ void TChannel::get(TData* resultData)
     memcpy(resultData, buffer, size);
 }
 
+void TChannel::put(TData t, int num)
+{
+    this->put(t);
+}
+
+void TChannel::get(TData* resultData, int num)
+{
+    this->get(resultData);
+}
+
 TChannel::~TChannel()
 {
     if (buffer) 
