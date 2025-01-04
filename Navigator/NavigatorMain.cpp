@@ -2,12 +2,25 @@
 #include "..\Navigator.h"
 using namespace std;
 
-int main()
+int main(int argc, char* argv[])
 {
     setlocale(LC_ALL, "rus");
 
-    NetworkChannel Nav("NAV", "127.0.0.1", 8484, false);
-    NetworkChannel NewPath("NewPath", "127.0.0.1", 8484), Path("Path", "127.0.0.1", 8484);
+    string addr;
+    int port;
+
+    if (argc < 3) {
+        addr = "127.0.0.1";
+        port = 8484;
+    }
+    else
+    {
+        addr = argv[1];
+        port = stoi(argv[2]);
+    }
+
+    NetworkChannel Nav("NAV", addr, port, false);
+    NetworkChannel NewPath("NewPath", addr, port), Path("Path", addr, port);
 
     Navigator navigator(&NewPath, &Nav, &Path);
 

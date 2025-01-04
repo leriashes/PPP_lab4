@@ -2,11 +2,24 @@
 #include "..\Camera.h"
 using namespace std;
 
-int main()
+int main(int argc, char* argv[])
 {
     setlocale(LC_ALL, "rus");
 
-    NetworkChannel Img("IMG", "127.0.0.1", 8484, false);
+    string addr;
+    int port;
+
+    if (argc < 3) {
+        addr = "127.0.0.1";
+        port = 8484;
+    }
+    else
+    {
+        addr = argv[1];
+        port = stoi(argv[2]);
+    }
+
+    NetworkChannel Img("IMG", addr, port, false);
     Camera camera(&Img);
 
     cout << "Модуль КАМЕРА\n\n";

@@ -2,11 +2,24 @@
 #include "..\GPS.h"
 using namespace std;
 
-int main()
+int main(int argc, char* argv[])
 {
     setlocale(LC_ALL, "rus");
 
-    NetworkChannel Nav("NAV", "127.0.0.1", 8484, false);
+    string addr;
+    int port;
+
+    if (argc < 3) {
+        addr = "127.0.0.1";
+        port = 8484;
+    }
+    else
+    {
+        addr = argv[1];
+        port = stoi(argv[2]);
+    }
+
+    NetworkChannel Nav("NAV", addr, port, false);
     GPS gps(&Nav);
 
     cout << "Модуль GPS\n\n";

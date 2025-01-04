@@ -26,7 +26,7 @@ Communicator::Communicator(NetworkChannel* NavChannel, NetworkChannel* ContrChan
 
 void Communicator::start()
 {
-	int i = 2;
+	int i = 1;
 
 	while (i < 3)
 	{

@@ -2,15 +2,28 @@
 #include "..\Controller.h"
 using namespace std;
 
-int main()
+int main(int argc, char* argv[])
 {
     setlocale(LC_ALL, "rus");
 
-    NetworkChannel Img("IMG", "127.0.0.1", 8484, false);
+    string addr;
+    int port;
 
-    NetworkChannel NewPath("NewPath", "127.0.0.1", 8484), Path("Path", "127.0.0.1", 8484), Finish("Finish", "127.0.0.1", 8484);
-    NetworkChannel Start("Start", "127.0.0.1", 8484), Stop("Stop", "127.0.0.1", 8484);
-    NetworkChannel Take("Take", "127.0.0.1", 8484), Ready("Ready", "127.0.0.1", 8484);
+    if (argc < 3) {
+        addr = "127.0.0.1";
+        port = 8484;
+    }
+    else
+    {
+        addr = argv[1];
+        port = stoi(argv[2]);
+    }
+
+    NetworkChannel Img("IMG", addr, port, false);
+
+    NetworkChannel NewPath("NewPath", addr, port), Path("Path", addr, port), Finish("Finish", addr, port);
+    NetworkChannel Start("Start", addr, port), Stop("Stop", addr, port);
+    NetworkChannel Take("Take", addr, port), Ready("Ready", addr, port);
 
     Controller controller(&Path, &NewPath, &Img, &Start, &Stop, &Take, &Ready, &Finish);
 
