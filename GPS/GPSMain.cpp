@@ -6,7 +6,7 @@ int main()
 {
     setlocale(LC_ALL, "rus");
 
-    TChannel Nav("NAV", 4096);
+    NetworkChannel Nav("NAV", "127.0.0.1", 8484, false);
     GPS gps(&Nav);
 
     cout << "Модуль GPS\n\n";

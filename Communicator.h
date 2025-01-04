@@ -4,14 +4,14 @@
 class Communicator : public MoonwalkerModule
 {
 private:
-	TChannel* NewPath;
-	TChannel* Finish;
+	NetworkChannel* NewPath;
+	NetworkChannel* Finish;
 
 	void sendData(int count);
 	void getData(int count);
 
 public:
-	Communicator(TChannel* NavChannel, TChannel* ContrChannel);
+	Communicator(NetworkChannel* NavChannel, NetworkChannel* ContrChannel);
 	void start() override;
 };
 

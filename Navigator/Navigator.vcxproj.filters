@@ -18,36 +18,42 @@
     <ClCompile Include="NavigatorMain.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="..\PPP_lab4\Navigator.cpp">
+    <ClCompile Include="..\Navigator.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="..\PPP_lab4\TChannel.cpp">
+    <ClCompile Include="..\TChannel.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="..\PPP_lab4\TData.cpp">
+    <ClCompile Include="..\TData.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="..\PPP_lab4\TReliableChannel.cpp">
+    <ClCompile Include="..\TReliableChannel.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="..\PPP_lab4\TSemaphore.cpp">
+    <ClCompile Include="..\TSemaphore.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="..\NetworkChannel.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\PPP_lab4\Navigator.h">
+    <ClInclude Include="..\Navigator.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="..\PPP_lab4\TChannel.h">
+    <ClInclude Include="..\TChannel.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="..\PPP_lab4\TData.h">
+    <ClInclude Include="..\TData.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="..\PPP_lab4\TReliableChannel.h">
+    <ClInclude Include="..\TReliableChannel.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="..\PPP_lab4\TSemaphore.h">
+    <ClInclude Include="..\TSemaphore.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NetworkChannel.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

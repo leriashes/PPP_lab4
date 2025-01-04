@@ -6,11 +6,11 @@ int main()
 {
     setlocale(LC_ALL, "rus");
 
-    TChannel Img("IMG", 1024);
+    NetworkChannel Img("IMG", "127.0.0.1", 8484, false);
 
-    TReliableChannel NewPath("NewPath", 1024), Path("Path", 1024), Finish("Finish", 1024);
-    TReliableChannel Start("Start", 1024), Stop("Stop", 1024);
-    TReliableChannel Take("Take", 1024), Ready("Ready", 1024);
+    NetworkChannel NewPath("NewPath", "127.0.0.1", 8484), Path("Path", "127.0.0.1", 8484), Finish("Finish", "127.0.0.1", 8484);
+    NetworkChannel Start("Start", "127.0.0.1", 8484), Stop("Stop", "127.0.0.1", 8484);
+    NetworkChannel Take("Take", "127.0.0.1", 8484), Ready("Ready", "127.0.0.1", 8484);
 
     Controller controller(&Path, &NewPath, &Img, &Start, &Stop, &Take, &Ready, &Finish);
 

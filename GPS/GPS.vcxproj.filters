@@ -18,30 +18,36 @@
     <ClCompile Include="GPSMain.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="..\PPP_lab4\GPS.cpp">
+    <ClCompile Include="..\GPS.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="..\PPP_lab4\TChannel.cpp">
+    <ClCompile Include="..\TChannel.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="..\PPP_lab4\TData.cpp">
+    <ClCompile Include="..\TData.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="..\PPP_lab4\TSemaphore.cpp">
+    <ClCompile Include="..\TSemaphore.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="..\NetworkChannel.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\PPP_lab4\GPS.h">
+    <ClInclude Include="..\GPS.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="..\PPP_lab4\TChannel.h">
+    <ClInclude Include="..\Channel.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="..\PPP_lab4\TData.h">
+    <ClInclude Include="..\TData.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="..\PPP_lab4\TSemaphore.h">
+    <ClInclude Include="..\TSemaphore.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NetworkChannel.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

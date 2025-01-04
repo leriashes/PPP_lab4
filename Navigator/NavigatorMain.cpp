@@ -6,8 +6,8 @@ int main()
 {
     setlocale(LC_ALL, "rus");
 
-    TChannel Nav("NAV", 1024);
-    TReliableChannel NewPath("NewPath", 1024), Path("Path", 1024);
+    NetworkChannel Nav("NAV", "127.0.0.1", 8484, false);
+    NetworkChannel NewPath("NewPath", "127.0.0.1", 8484), Path("Path", "127.0.0.1", 8484);
 
     Navigator navigator(&NewPath, &Nav, &Path);
 

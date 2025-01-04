@@ -4,11 +4,11 @@
 class GPS : public MoonwalkerModule
 {
 private:
-	TChannel* Nav;
+	NetworkChannel* Nav;
 	void sendData(int count);
 
 public:
-	GPS(TChannel* channel);
+	GPS(NetworkChannel* channel);
 	void start() override;
 };
 

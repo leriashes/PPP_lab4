@@ -18,7 +18,7 @@ void Manipulator::sendReady()
 	Ready->put(data);
 }
 
-Manipulator::Manipulator(TChannel* Take, TChannel* Ready)
+Manipulator::Manipulator(NetworkChannel* Take, NetworkChannel* Ready)
 {
 	this->Take = Take;
 	this->Ready = Ready;

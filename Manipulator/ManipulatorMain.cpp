@@ -6,7 +6,7 @@ int main()
 {
     setlocale(LC_ALL, "rus");
 
-    TReliableChannel Take("Take", 1024), Ready("Ready", 1024);
+    NetworkChannel Take("Take", "127.0.0.1", 8484), Ready("Ready", "127.0.0.1", 8484);
 
     Manipulator manipulator(&Take, &Ready);
 

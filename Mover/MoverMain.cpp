@@ -6,7 +6,7 @@ int main()
 {
     setlocale(LC_ALL, "rus");
 
-    TReliableChannel Start("Start", 1024), Stop("Stop", 1024);
+    NetworkChannel Start("Start", "127.0.0.1", 8484), Stop("Stop", "127.0.0.1", 8484);
 
     Mover mover(&Start, &Stop);
 

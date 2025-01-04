@@ -4,17 +4,17 @@
 class Controller : public MoonwalkerModule
 {
 private:
-	TChannel* Path;
-	TChannel* NewPath;
-	TChannel* Finish;
+	NetworkChannel* Path;
+	NetworkChannel* NewPath;
+	NetworkChannel* Finish;
 
-	TChannel* Img; 
+	NetworkChannel* Img; 
 
-	TChannel* Start; 
-	TChannel* Stop;
+	NetworkChannel* Start; 
+	NetworkChannel* Stop;
 
-	TChannel* Take;
-	TChannel* Ready;
+	NetworkChannel* Take;
+	NetworkChannel* Ready;
 
 	bool getPathData();
 	bool getCameraData();
@@ -27,7 +27,7 @@ private:
 	void sendFinish();
 
 public:
-	Controller(TChannel* Path, TChannel* NewPath, TChannel* Img, TChannel* Start, TChannel* Stop, TChannel* Take, TChannel* Ready, TChannel* Finish);
+	Controller(NetworkChannel* Path, NetworkChannel* NewPath, NetworkChannel* Img, NetworkChannel* Start, NetworkChannel* Stop, NetworkChannel* Take, NetworkChannel* Ready, NetworkChannel* Finish);
 	void start() override;
 };
 

@@ -18,7 +18,7 @@ void Communicator::getData(int count)
 	cout << "\nÊÎÌÌÓÍÈÊÀÖÈÎÍÍÛÉ ÌÎÄÓËÜ .2_2: ïîëó÷åíî ñîîáùåíèå î çàâåðøåíèè ìèññèè #" << count << "\n";
 }
 
-Communicator::Communicator(TChannel* NavChannel, TChannel* ContrChannel)
+Communicator::Communicator(NetworkChannel* NavChannel, NetworkChannel* ContrChannel)
 {
 	NewPath = NavChannel;
 	Finish = ContrChannel;
@@ -26,7 +26,7 @@ Communicator::Communicator(TChannel* NavChannel, TChannel* ContrChannel)
 
 void Communicator::start()
 {
-	int i = 1;
+	int i = 2;
 
 	while (i < 3)
 	{

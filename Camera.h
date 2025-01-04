@@ -4,11 +4,11 @@
 class Camera : public MoonwalkerModule
 {
 private:
-	TChannel* Img;
+	NetworkChannel* Img;
 	void sendData(int count);
 
 public:
-	Camera(TChannel* channel);
+	Camera(NetworkChannel* channel);
 	void start() override;
 };
 

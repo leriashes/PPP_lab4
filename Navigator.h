@@ -4,9 +4,9 @@
 class Navigator : public MoonwalkerModule
 {
 private:
-	TChannel* NewPath;
-	TChannel* Nav;
-	TChannel* Path;
+	NetworkChannel* NewPath;
+	NetworkChannel* Nav;
+	NetworkChannel* Path;
 
 	int len;
 
@@ -15,7 +15,7 @@ private:
 	void sendData();
 
 public:
-	Navigator(TChannel* CommunicatorChannel, TChannel* GPSchannel, TChannel* ContrChannel);
+	Navigator(NetworkChannel* CommunicatorChannel, NetworkChannel* GPSchannel, NetworkChannel* ContrChannel);
 	void start() override;
 };
 

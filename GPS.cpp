@@ -8,7 +8,7 @@ void GPS::sendData(int count)
 	cout << "\n    GPS: отправлено местоположение #" << count;
 }
 
-GPS::GPS(TChannel* channel)
+GPS::GPS(NetworkChannel* channel)
 {
 	Nav = channel;
 }

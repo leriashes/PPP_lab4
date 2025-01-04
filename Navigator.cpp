@@ -45,7 +45,7 @@ void Navigator::sendData()
 	Path->put(data);
 }
 
-Navigator::Navigator(TChannel* CommunicatorChannel, TChannel* GPSChannel, TChannel* ContrChannel)
+Navigator::Navigator(NetworkChannel* CommunicatorChannel, NetworkChannel* GPSChannel, NetworkChannel* ContrChannel)
 {
 	NewPath = CommunicatorChannel;
 	Nav = GPSChannel;

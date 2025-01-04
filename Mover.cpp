@@ -18,7 +18,7 @@ void Mover::sendStopMoving()
 	Stop->put(data);
 }
 
-Mover::Mover(TChannel* Start, TChannel* Stop)
+Mover::Mover(NetworkChannel* Start, NetworkChannel* Stop)
 {
 	this->Start = Start;
 	this->Stop = Stop;

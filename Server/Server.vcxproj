@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{c4418499-352a-4059-b537-628774df2197}</ProjectGuid>
-    <RootNamespace>GPS</RootNamespace>
+    <ProjectGuid>{7f4ecce3-15a4-4fb1-bfe3-d2352438dc5d}</ProjectGuid>
+    <RootNamespace>Server</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,19 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\GPS.cpp" />
-    <ClCompile Include="..\NetworkChannel.cpp" />
-    <ClCompile Include="..\TChannel.cpp" />
-    <ClCompile Include="..\TData.cpp" />
-    <ClCompile Include="..\TSemaphore.cpp" />
-    <ClCompile Include="GPSMain.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\GPS.h" />
-    <ClInclude Include="..\Channel.h" />
-    <ClInclude Include="..\NetworkChannel.h" />
-    <ClInclude Include="..\TData.h" />
-    <ClInclude Include="..\TSemaphore.h" />
+    <ClCompile Include="Server.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

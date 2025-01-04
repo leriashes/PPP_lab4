@@ -4,13 +4,13 @@
 class Mover : public MoonwalkerModule
 {
 private:
-	TChannel* Start;
-	TChannel* Stop;
+	NetworkChannel* Start;
+	NetworkChannel* Stop;
 
 	void getStartMoving();
 	void sendStopMoving();
 
 public:
-	Mover(TChannel* Start, TChannel* Stop);
+	Mover(NetworkChannel* Start, NetworkChannel* Stop);
 	void start() override;
 };

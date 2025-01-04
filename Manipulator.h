@@ -4,14 +4,14 @@
 class Manipulator : public MoonwalkerModule
 {
 private:
-	TChannel* Take;
-	TChannel* Ready;
+	NetworkChannel* Take;
+	NetworkChannel* Ready;
 
 	void getTake();
 	void sendReady();
 
 public:
-	Manipulator(TChannel* Take, TChannel* Ready);
+	Manipulator(NetworkChannel* Take, NetworkChannel* Ready);
 	void start() override;
 };
 

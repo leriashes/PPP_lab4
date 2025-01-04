@@ -6,7 +6,7 @@ int main()
 {
     setlocale(LC_ALL, "rus");
 
-    TChannel Img("IMG", 4096);
+    NetworkChannel Img("IMG", "127.0.0.1", 8484, false);
     Camera camera(&Img);
 
     cout << "Модуль КАМЕРА\n\n";

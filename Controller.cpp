@@ -1,6 +1,6 @@
 #include "Controller.h"
 
-Controller::Controller(TChannel* Path, TChannel* NewPath, TChannel* Img, TChannel* Start, TChannel* Stop, TChannel* Take, TChannel* Ready, TChannel* Finish)
+Controller::Controller(NetworkChannel* Path, NetworkChannel* NewPath, NetworkChannel* Img, NetworkChannel* Start, NetworkChannel* Stop, NetworkChannel* Take, NetworkChannel* Ready, NetworkChannel* Finish)
 {
 	this->Path = Path;
 	this->NewPath = NewPath;

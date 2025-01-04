@@ -135,6 +135,7 @@
     <ClCompile Include="MoonwalkerModule.cpp" />
     <ClCompile Include="Mover.cpp" />
     <ClCompile Include="Navigator.cpp" />
+    <ClCompile Include="NetworkChannel.cpp" />
     <ClCompile Include="PPP_lab4.cpp" />
     <ClCompile Include="TChannel.cpp" />
     <ClCompile Include="TData.cpp" />
@@ -151,6 +152,7 @@
     <ClInclude Include="MoonwalkerModule.h" />
     <ClInclude Include="Mover.h" />
     <ClInclude Include="Navigator.h" />
+    <ClInclude Include="NetworkChannel.h" />
     <ClInclude Include="TChannel.h" />
     <ClInclude Include="TData.h" />
     <ClInclude Include="ThreadWrap.h" />

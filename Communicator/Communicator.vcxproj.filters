@@ -33,6 +33,9 @@
     <ClCompile Include="..\TSemaphore.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="..\NetworkChannel.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Communicator.h">
@@ -48,6 +51,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="..\TSemaphore.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NetworkChannel.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

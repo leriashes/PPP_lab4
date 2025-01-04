@@ -6,7 +6,7 @@ int main()
 {
     setlocale(LC_ALL, "rus");
 
-    TReliableChannel NewPath("NewPath", 1024), Finish("Finish", 1024);
+    NetworkChannel NewPath("NewPath", "127.0.0.1", 8484), Finish("Finish", "127.0.0.1", 8484);
 
     Communicator communicator(&NewPath, &Finish);
 

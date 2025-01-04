@@ -8,7 +8,7 @@ void Camera::sendData(int count)
 	cout << "\n    КАМЕРА: отправлен снимок #" << count;
 }
 
-Camera::Camera(TChannel* channel)
+Camera::Camera(NetworkChannel* channel)
 {
 	Img = channel;
 }

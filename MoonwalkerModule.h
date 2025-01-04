@@ -4,7 +4,7 @@
 #include <thread>
 #include <cstdlib>
 #include <ctime>
-#include "TReliableChannel.h"
+#include "NetworkChannel.h"
 using namespace std;
 
 class MoonwalkerModule

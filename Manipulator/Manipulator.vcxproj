@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Manipulator.cpp" />
+    <ClCompile Include="..\NetworkChannel.cpp" />
     <ClCompile Include="..\TChannel.cpp" />
     <ClCompile Include="..\TData.cpp" />
     <ClCompile Include="..\TReliableChannel.cpp" />
@@ -136,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Manipulator.h" />
+    <ClInclude Include="..\NetworkChannel.h" />
     <ClInclude Include="..\TChannel.h" />
     <ClInclude Include="..\TData.h" />
     <ClInclude Include="..\TReliableChannel.h" />
