@@ -3,6 +3,9 @@
 #include <stdio.h>
 #include <iostream>
 #include "..\TReliableChannel.h"
+#include "..\Controller.h"
+#include "..\Manipulator.h"
+#include "..\ThreadWrap.h"
 using namespace std;
 
 #define PRODUCER_SLEEP_TIME_MS 50
@@ -58,7 +61,7 @@ void  servFun(int i, int n, TSemaphore freeSem) {
             // получен  запрос
         case   NEED_FORKS:
             pr.P();  
-            cout << i << " servFun   NEED_FORKS  " << i << endl; 
+            cout << i << "  servFun   NEED_FORKS  " << i << endl; 
             pr.V();
 
             myProc = true;
@@ -128,7 +131,7 @@ DWORD WINAPI ServThreadProc(PVOID p) {
     cout << "servProc started " << ServId << endl; 
     pr.V();
 
-    servFun(index, 5, free);
+    servFun(index, 2, free);
 
     pr.P();  
     cout << "servProc stoped  " << ServId << endl; 
@@ -136,76 +139,127 @@ DWORD WINAPI ServThreadProc(PVOID p) {
 
     return 0;
 }
-
-DWORD WINAPI PhilosopherThread(PVOID p) {
-    ULONG PhilosopherId = (ULONG)(ULONG_PTR)p;
-    int index = PhilosopherId;
-    char nameSem[100] = "nameOfSemFree_";
-    int k = strlen(nameSem);
-    nameSem[k] = '0' + index; 
-    nameSem[k + 1] = 0;
-    TSemaphore free = TSemaphore(nameSem, false);
-
-    pr.P(); 
-    cout << "Philosopher  started " << PhilosopherId << endl; 
-    pr.V();
-
-    int i = 0;
-
-    while (i < 1) {
-
-        pr.P();
-        cout << "   thinking  " << index << endl;
-        pr.V();
-
-        Sleep(SLEEP_TIME_MS);
-
-        pr.P();
-        cout << "  NEED_FORKS   " << index << endl;
-        pr.V();
-
-        chan[index]->put(TData(NEED_FORKS, 0));
-
-        free.P();
-
-        pr.P();  
-        cout << "   eating  " << index << endl; 
-        pr.V();
-
-        Sleep(SLEEP_TIME_MS);
-
-        chan[index]->put(TData(FREE_FORKS, 0));
-
-        pr.P();  
-        cout << "   FREE_FORKS  " << index << endl;  
-        pr.V();
-
-        i++;
-    }
-
-    pr.P();  
-    cout << "Philosopher  stoped   " << PhilosopherId << endl; 
-    pr.V();
-
-    return 0;
-}
+//
+//DWORD WINAPI PhilosopherThread(PVOID p) {
+//    ULONG PhilosopherId = (ULONG)(ULONG_PTR)p;
+//    int index = PhilosopherId;
+//    char nameSem[100] = "nameOfSemFree_";
+//    int k = strlen(nameSem);
+//    nameSem[k] = '0' + index; 
+//    nameSem[k + 1] = 0;
+//    TSemaphore free = TSemaphore(nameSem, false);
+//
+//    pr.P(); 
+//    cout << "Philosopher  started " << PhilosopherId << endl; 
+//    pr.V();
+//
+//    int i = 0;
+//
+//    while (i < 1) {
+//
+//        pr.P();
+//        cout << "   thinking  " << index << endl;
+//        pr.V();
+//
+//        Sleep(SLEEP_TIME_MS);
+//
+//        pr.P();
+//        cout << "  NEED_FORKS   " << index << endl;
+//        pr.V();
+//
+//        chan[index]->put(TData(NEED_FORKS, 0));
+//
+//        free.P();
+//
+//        pr.P();  
+//        cout << "   eating  " << index << endl; 
+//        pr.V();
+//
+//        Sleep(SLEEP_TIME_MS);
+//
+//        chan[index]->put(TData(FREE_FORKS, 0));
+//
+//        pr.P();  
+//        cout << "   FREE_FORKS  " << index << endl;  
+//        pr.V();
+//
+//        i++;
+//    }
+//
+//    pr.P();  
+//    cout << "Philosopher  stoped   " << PhilosopherId << endl; 
+//    pr.V();
+//
+//    return 0;
+//}
 
 int main() {
+    setlocale(LC_ALL, "rus");
 
-    int n = 5;
+    int n = 2;
     DWORD id;
-    HANDLE serv[10], phil[10];
+    HANDLE serv[10];
+
+    Controller* phil[10];
+    Manipulator* arm[10];
+
+    TSemaphore* free[10];
+    TReliableChannel* take[10];
+    TReliableChannel* ready[10];
+
+    ThreadWrap* controllers[10];
+    ThreadWrap* manipulators[10];
+
     createChan(n);
 
     for (int i = 0; i < n; i++) {
-        serv[i] = CreateThread(NULL, 0, ServThreadProc, (PVOID)i, 0, &id);
-        phil[i] = CreateThread(NULL, 0, PhilosopherThread, (PVOID)i, 0, &id);
+        take[i] = new TReliableChannel(("Take" + i), 1024);
+        ready[i] = new TReliableChannel(("Ready" + i), 1024);
+        arm[i] = new Manipulator(take[i], ready[i], i);
+
+        manipulators[i] = new ThreadWrap(arm[i]);
     }
 
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < n; i++) {
+        char nameSem[100] = "nameOfSemFree_";
+        int k = strlen(nameSem);
+        nameSem[k] = '0' + i;
+        nameSem[k + 1] = 0;
+        free[i] = new TSemaphore(nameSem, false);
+
+        phil[i] = new Controller(i, &pr, free[i], chan[i], take[i], ready[i], take[(i + 1) % n], ready[(i + 1) % n]);
+
+        controllers[i] = new ThreadWrap(phil[i]);
+    }
+
+    for (int i = 0; i < n; i++) {
+
+        serv[i] = CreateThread(NULL, 0, ServThreadProc, (PVOID)i, 0, &id);
+
+        manipulators[i]->startThread();
+        controllers[i]->startThread();
+    }
+
+    for (int i = 0; i < n; i++)
         WaitForSingleObject(serv[i], INFINITE);
-    for (int i = 0; i < 5; i++)
-        WaitForSingleObject(phil[i], INFINITE);
+
+    for (int i = 0; i < n; i++)
+        controllers[i]->waitForThread();
+
+    for (int i = 0; i < n; i++)
+        manipulators[i]->waitForThread();
+
+    for (int i = 0; i < n; i++)
+    {
+        delete phil[i];
+        delete arm[i];
+        delete controllers[i];
+        delete manipulators[i];
+
+        delete free[i];
+        delete take[i];
+        delete ready[i];
+    }
 
     deleteChan(n);
 
